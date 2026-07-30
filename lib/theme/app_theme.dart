@@ -7,10 +7,18 @@ import 'package:flutter/material.dart';
 class AppColors {
   AppColors._();
 
-  // Brand accents
-  static const Color cyan = Color(0xFF06B6D4);
-  static const Color purple = Color(0xFF8B5CF6);
-  static const Color blue = Color(0xFF3B82F6);
+  // Single brand colour — light blue ("biru muda"). One flat colour, no gradients.
+  static const Color brand = Color(0xFF38BDF8); // sky-400 light blue
+  static const Color brandDeep = Color(0xFF0EA5E9); // slightly deeper, for text-on-fill
+
+  // Brand accents now all resolve to the single light blue, so any existing
+  // two-stop "gradient" (e.g. [cyan, purple]) collapses to a flat light blue.
+  static const Color cyan = brand;
+  static const Color purple = brand;
+  static const Color blue = brand;
+
+  // Semantic status colours — kept so machine state stays readable
+  // (running / idle / down / maintenance / alarm severity).
   static const Color amber = Color(0xFFF59E0B);
   static const Color green = Color(0xFF10B981);
   static const Color red = Color(0xFFEF4444);
