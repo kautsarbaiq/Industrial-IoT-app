@@ -39,13 +39,15 @@ class _MeshGradientBgState extends State<MeshGradientBg>
       builder: (context, child) {
         return Container(
           decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: isDark
-                  ? const [Color(0xFF0F172A), Color(0xFF111C33), Color(0xFF020617)]
-                  : const [Color(0xFFFFFFFF), Color(0xFFF5FAFF), Color(0xFFEFF5FF)],
-            ),
+            // Light mode: one flat light-blue ("biru muda"), no colourful mesh.
+            color: isDark ? null : const Color(0xFFDCEDFC),
+            gradient: isDark
+                ? const LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [Color(0xFF0F172A), Color(0xFF111C33), Color(0xFF020617)],
+                  )
+                : null,
           ),
           child: CustomPaint(
             painter: _MeshPainter(_controller.value, isDark),
@@ -93,33 +95,8 @@ class _MeshPainter extends CustomPainter {
         size.width * 0.42,
         AppColors.amber.withOpacity(0.08),
       );
-    } else {
-      // Brighter, more colourful pastels for a cheerful light look.
-      blob(
-        Offset(size.width * (0.2 + 0.12 * math.sin(a)),
-            size.height * (0.12 + 0.08 * math.cos(a))),
-        size.width * 0.55,
-        const Color(0xFF60A5FA).withOpacity(0.26), // blue-400
-      );
-      blob(
-        Offset(size.width * (0.82 + 0.10 * math.cos(a + 1.2)),
-            size.height * (0.30 + 0.10 * math.sin(a + 1.2))),
-        size.width * 0.5,
-        const Color(0xFF22D3EE).withOpacity(0.22), // cyan-400
-      );
-      blob(
-        Offset(size.width * (0.78 + 0.12 * math.cos(a + 2.0)),
-            size.height * (0.72 + 0.08 * math.sin(a + 2.0))),
-        size.width * 0.46,
-        const Color(0xFFA78BFA).withOpacity(0.22), // violet-400
-      );
-      blob(
-        Offset(size.width * (0.28 + 0.15 * math.sin(a + 2.8)),
-            size.height * (0.82 + 0.06 * math.cos(a + 2.8))),
-        size.width * 0.46,
-        const Color(0xFFFBBF24).withOpacity(0.18), // amber-400
-      );
     }
+    // Light mode: intentionally no blobs — a single flat light-blue backdrop.
   }
 
   @override
