@@ -97,7 +97,7 @@ class MachineDetailScreen extends StatelessWidget {
                     const SizedBox(height: 12),
                     _factor(context, 'Performance', m.performance, AppColors.purple),
                     const SizedBox(height: 12),
-                    _factor(context, 'Quality', m.quality, AppColors.green),
+                    _factor(context, 'Quality', m.quality, AppColors.blue),
                   ]),
                 ),
               ]),
