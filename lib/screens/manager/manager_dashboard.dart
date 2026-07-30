@@ -149,7 +149,7 @@ class ManagerDashboard extends StatelessWidget {
                         MockDataService.plantPerformance, AppColors.purple),
                     const SizedBox(height: 14),
                     _factorBar(context, 'Quality',
-                        MockDataService.plantQuality, AppColors.green),
+                        MockDataService.plantQuality, AppColors.blue),
                   ],
                 ),
               ),
