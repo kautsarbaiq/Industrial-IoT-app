@@ -80,19 +80,21 @@ class _GlassCardState extends State<GlassCard>
                 decoration: BoxDecoration(
                   color: isDark
                       ? AppColors.slate900.withOpacity(0.25)
-                      : Colors.white.withOpacity(0.55),
+                      : Colors.white.withOpacity(0.72),
                   borderRadius: BorderRadius.circular(widget.borderRadius),
                   border: Border.all(
                     color: isDark
                         ? Colors.white.withOpacity(0.1)
-                        : AppColors.slate200,
-                    width: isDark ? widget.borderWidth : 1.0,
+                        : Colors.white.withOpacity(0.9),
+                    width: isDark ? widget.borderWidth : 1.2,
                   ),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(isDark ? 0.2 : 0.04),
+                      color: isDark
+                          ? Colors.black.withOpacity(0.2)
+                          : const Color(0xFF64748B).withOpacity(0.12),
                       blurRadius: 24,
-                      offset: const Offset(0, 8),
+                      offset: const Offset(0, 10),
                     ),
                     BoxShadow(
                       color: Colors.black.withOpacity(isDark ? 0.1 : 0.02),
@@ -101,7 +103,7 @@ class _GlassCardState extends State<GlassCard>
                     ),
                     if (!isDark)
                       BoxShadow(
-                        color: Colors.white.withOpacity(0.7),
+                        color: Colors.white.withOpacity(0.9),
                         blurRadius: 1,
                         spreadRadius: -1,
                         offset: const Offset(0, -0.5),
