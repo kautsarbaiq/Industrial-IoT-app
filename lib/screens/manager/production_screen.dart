@@ -68,7 +68,7 @@ class ProductionScreen extends StatelessWidget {
               _op(context, '×'),
               _factorPill(context, 'Performance', p, AppColors.purple),
               _op(context, '×'),
-              _factorPill(context, 'Quality', q, AppColors.green),
+              _factorPill(context, 'Quality', q, AppColors.blue),
             ],
           ),
           const SizedBox(height: 16),
