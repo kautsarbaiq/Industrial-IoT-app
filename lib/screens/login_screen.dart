@@ -50,11 +50,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: 84,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(24),
-                      gradient: const LinearGradient(
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                        colors: [AppColors.cyan, AppColors.purple],
-                      ),
+                      color: AppColors.brandDeep,
                       boxShadow: [
                         BoxShadow(
                           color: AppColors.cyan.withOpacity(0.35),
@@ -69,7 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   const SizedBox(height: 16),
                   ShaderMask(
                     shaderCallback: (b) => const LinearGradient(
-                      colors: [AppColors.cyan, AppColors.purple],
+                      colors: [AppColors.brandDeep, AppColors.brandDeep],
                     ).createShader(b),
                     child: Text(
                       'INDUSTRIAL IoT',
@@ -207,8 +203,7 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Ink(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(24),
-            gradient: const LinearGradient(
-                colors: [AppColors.cyan, AppColors.purple]),
+            color: AppColors.brandDeep,
             boxShadow: [
               BoxShadow(
                 color: AppColors.cyan.withOpacity(0.3),
