@@ -15,6 +15,8 @@ import '../../widgets/status_badge.dart';
 import '../../widgets/glass_page.dart';
 import '../shared/alarms_screen.dart';
 import '../shared/machines_screen.dart';
+import '../shared/floor_plan_screen.dart';
+import '../shared/energy_screen.dart';
 import '../profile_screen.dart';
 
 class ManagerDashboard extends StatelessWidget {
@@ -41,6 +43,9 @@ class ManagerDashboard extends StatelessWidget {
                 _oeeCard(context),
                 const SizedBox(height: 16),
                 _kpiGrid(context),
+                const SizedBox(height: 20),
+                const SectionHeader(title: 'Monitoring'),
+                _quickAccess(context),
                 const SizedBox(height: 20),
                 const SectionHeader(title: 'Output vs Target (today)'),
                 _outputChart(context),
@@ -286,6 +291,48 @@ class ManagerDashboard extends StatelessWidget {
           ),
         ),
       ]),
+    ]);
+  }
+
+  Widget _quickAccess(BuildContext context) {
+    Widget tile(IconData icon, String title, String sub, Color color, Widget page) {
+      final onSurface = Theme.of(context).colorScheme.onSurface;
+      final onVar = Theme.of(context).colorScheme.onSurfaceVariant;
+      return Expanded(
+        child: GlassCard(
+          margin: EdgeInsets.zero,
+          padding: const EdgeInsets.all(16),
+          onTap: () => openGlassPage(context, title, page),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                width: 40,
+                height: 40,
+                decoration: BoxDecoration(
+                    color: color.withOpacity(0.14),
+                    borderRadius: BorderRadius.circular(12)),
+                child: Icon(icon, color: color, size: 22),
+              ),
+              const SizedBox(height: 12),
+              Text(title,
+                  style: GoogleFonts.poppins(
+                      color: onSurface,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600)),
+              Text(sub, style: GoogleFonts.poppins(color: onVar, fontSize: 11.5)),
+            ],
+          ),
+        ),
+      );
+    }
+
+    return Row(children: [
+      tile(Icons.grid_view_rounded, 'Floor Plan', 'Live layout', AppColors.cyan,
+          const FloorPlanScreen()),
+      const SizedBox(width: 12),
+      tile(Icons.bolt_rounded, 'Energy', 'Power & cost', AppColors.amber,
+          const EnergyScreen()),
     ]);
   }
 
