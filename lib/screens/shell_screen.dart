@@ -16,6 +16,8 @@ import 'operator/operator_analytics.dart';
 import 'shared/machines_screen.dart';
 import 'shared/alarms_screen.dart';
 import 'shared/maintenance_screen.dart';
+import 'shared/floor_plan_screen.dart';
+import 'shared/energy_screen.dart';
 import 'profile_screen.dart';
 
 class ShellScreen extends StatefulWidget {
@@ -111,6 +113,12 @@ class _MoreScreen extends StatelessWidget {
             Text('Alarms, maintenance & settings',
                 style: GoogleFonts.poppins(color: onVar, fontSize: 14)),
             const SizedBox(height: 24),
+            _tile(context, Icons.grid_view_rounded, 'Floor Plan',
+                'Live shop-floor layout by line', AppColors.cyan,
+                const FloorPlanScreen()),
+            _tile(context, Icons.bolt_rounded, 'Energy Monitoring',
+                'Power draw, kWh & cost', AppColors.amber,
+                const EnergyScreen()),
             _tile(context, Icons.notifications_active_rounded, 'Alarms & Events',
                 'Live faults, warnings and notices', AppColors.red,
                 const AlarmsScreen()),
