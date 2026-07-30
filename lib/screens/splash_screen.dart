@@ -56,11 +56,7 @@ class _SplashScreenState extends State<SplashScreen>
                     height: 108,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30),
-                      gradient: const LinearGradient(
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                        colors: [AppColors.cyan, AppColors.purple],
-                      ),
+                      color: AppColors.brandDeep,
                       boxShadow: [
                         BoxShadow(
                           color: AppColors.cyan.withOpacity(0.4),
@@ -75,7 +71,7 @@ class _SplashScreenState extends State<SplashScreen>
                   const SizedBox(height: 28),
                   ShaderMask(
                     shaderCallback: (b) => const LinearGradient(
-                      colors: [AppColors.cyan, AppColors.purple],
+                      colors: [AppColors.brandDeep, AppColors.brandDeep],
                     ).createShader(b),
                     child: Text(
                       'INDUSTRIAL IoT',
