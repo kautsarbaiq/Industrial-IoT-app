@@ -213,4 +213,36 @@ class MockDataService {
         ShiftReport(id: 's3', shift: 'Shift B · 14:00–22:00', date: _now.subtract(const Duration(days: 1)), line: 'All lines', output: 15540, target: 18000, oee: 80.3, availability: 91.1, performance: 89.2, quality: 98.9, downtimeMinutes: 322, rejects: 190, supervisor: 'Wei Ling'),
         ShiftReport(id: 's4', shift: 'Shift A · 06:00–14:00', date: _now.subtract(const Duration(days: 1)), line: 'All lines', output: 15980, target: 18000, oee: 81.4, availability: 91.6, performance: 89.9, quality: 98.8, downtimeMinutes: 300, rejects: 168, supervisor: 'Hafiz Rahman'),
       ];
+
+  // ── Energy monitoring ──────────────────────────────────────────────────
+  static const double tariffPerKwh = 0.52; // RM per kWh (demo)
+
+  /// Instantaneous plant load (sum of every machine's live power draw).
+  static double get totalPowerNow =>
+      machines.fold(0.0, (a, m) => a + m.power);
+
+  static double get energyTodayKwh => 3820;
+  static double get costTodayRM => energyTodayKwh * tariffPerKwh;
+  static double get peakDemandKw => 168.4;
+
+  /// Energy intensity — kWh consumed per 1,000 good units produced.
+  static double get energyIntensity =>
+      energyTodayKwh / (outputToday / 1000);
+
+  /// Plant power draw (kW) per hour across the shift.
+  static List<double> get hourlyPower =>
+      [96, 104, 110, 118, 132, 128, 141, 136, 149, 155, 147, 162];
+
+  /// Live power draw (kW) grouped by line.
+  static Map<String, double> get powerByLine {
+    final map = <String, double>{};
+    for (final m in machines) {
+      map[m.line] = (map[m.line] ?? 0) + m.power;
+    }
+    return map;
+  }
+
+  /// Machines ranked by current power draw (biggest consumers first).
+  static List<Machine> get machinesByPower =>
+      [...machines]..sort((a, b) => b.power.compareTo(a.power));
 }
