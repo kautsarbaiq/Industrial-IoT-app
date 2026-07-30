@@ -44,7 +44,7 @@ class _MeshGradientBgState extends State<MeshGradientBg>
               end: Alignment.bottomRight,
               colors: isDark
                   ? const [Color(0xFF0F172A), Color(0xFF111C33), Color(0xFF020617)]
-                  : const [Color(0xFFFFFFFF), Color(0xFFFCFCFD), Color(0xFFF8FAFC)],
+                  : const [Color(0xFFFFFFFF), Color(0xFFF5FAFF), Color(0xFFEFF5FF)],
             ),
           ),
           child: CustomPaint(
