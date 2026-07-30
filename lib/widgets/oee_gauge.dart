@@ -19,11 +19,8 @@ class OeeGauge extends StatelessWidget {
     this.strokeWidth = 14,
   });
 
-  Color get _bandColor {
-    if (value >= 85) return AppColors.green;
-    if (value >= 65) return AppColors.amber;
-    return AppColors.red;
-  }
+  // Single flat light-blue arc (no health-band colours, no gradient).
+  Color get _bandColor => AppColors.brand;
 
   @override
   Widget build(BuildContext context) {
@@ -109,12 +106,7 @@ class _GaugePainter extends CustomPainter {
     canvas.drawArc(rect, _start, _sweep, false, trackPaint);
 
     final valuePaint = Paint()
-      ..shader = SweepGradient(
-        startAngle: _start,
-        endAngle: _start + _sweep,
-        colors: [color.withOpacity(0.55), color],
-        transform: GradientRotation(_start),
-      ).createShader(rect)
+      ..color = color
       ..style = PaintingStyle.stroke
       ..strokeWidth = strokeWidth
       ..strokeCap = StrokeCap.round;
