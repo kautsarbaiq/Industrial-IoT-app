@@ -81,11 +81,7 @@ class ReportsScreen extends StatelessWidget {
       {bool highlight = false}) {
     final onSurface = Theme.of(context).colorScheme.onSurface;
     final onVar = Theme.of(context).colorScheme.onSurfaceVariant;
-    final color = r.oee >= 85
-        ? AppColors.green
-        : r.oee >= 65
-            ? AppColors.amber
-            : AppColors.red;
+    const color = AppColors.brand; // single flat light-blue (no OEE health bands)
     return GlassCard(
       onTap: () => openGlassPage(context, 'Shift Report', _ReportDetail(report: r)),
       child: Column(
