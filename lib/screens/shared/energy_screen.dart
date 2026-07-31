@@ -159,20 +159,12 @@ class EnergyScreen extends StatelessWidget {
                 ],
                 isCurved: true,
                 curveSmoothness: 0.3,
-                gradient: const LinearGradient(
-                    colors: [AppColors.amber, AppColors.red]),
+                color: AppColors.brand,
                 barWidth: 3,
                 dotData: const FlDotData(show: false),
                 belowBarData: BarAreaData(
                   show: true,
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [
-                      AppColors.amber.withOpacity(0.22),
-                      AppColors.amber.withOpacity(0.0)
-                    ],
-                  ),
+                  color: AppColors.brand.withOpacity(0.14),
                 ),
               ),
             ],
@@ -189,7 +181,7 @@ class EnergyScreen extends StatelessWidget {
     final entries = byLine.entries.toList()
       ..sort((a, b) => b.value.compareTo(a.value));
     final maxV = entries.first.value;
-    final colors = [AppColors.cyan, AppColors.purple, AppColors.amber];
+    final colors = [AppColors.brand, AppColors.brand, AppColors.brand];
     return GlassCard(
       child: Column(
         children: [
