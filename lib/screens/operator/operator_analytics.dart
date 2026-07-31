@@ -140,13 +140,7 @@ class OperatorAnalytics extends StatelessWidget {
                     toY: machines[i].oee,
                     width: 26,
                     borderRadius: BorderRadius.circular(6),
-                    gradient: LinearGradient(
-                      begin: Alignment.bottomCenter,
-                      end: Alignment.topCenter,
-                      colors: machines[i].oee >= 65
-                          ? [AppColors.cyan, AppColors.purple]
-                          : [AppColors.amber, AppColors.red],
-                    ),
+                    color: AppColors.brand,
                   ),
                 ]),
             ],
