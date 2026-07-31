@@ -526,11 +526,7 @@ class ManagerDashboard extends StatelessWidget {
   Widget _lineRow(BuildContext context, ProductionLine l) {
     final onSurface = Theme.of(context).colorScheme.onSurface;
     final onVar = Theme.of(context).colorScheme.onSurfaceVariant;
-    final color = l.oee >= 85
-        ? AppColors.green
-        : l.oee >= 65
-            ? AppColors.amber
-            : AppColors.red;
+    const color = AppColors.brand; // single flat light-blue (no OEE health bands)
     return GlassCard(
       padding: const EdgeInsets.all(16),
       child: Row(children: [
